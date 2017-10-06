@@ -11,6 +11,7 @@ class Queue
 
   def enqueue(el)
     @queue << el
+    el
   end
 
   def dequeue
