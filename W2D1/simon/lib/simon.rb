@@ -1,14 +1,14 @@
 require 'colorize'
 
 class Simon
-  # COLORS = %w(red blue green yellow)
+  COLORS = %w(red blue green yellow)
 
-  COLORS = [
-    "red".colorize(:red),
-    "blue".colorize(:blue),
-    "yellow".colorize(:yellow),
-    "green".colorize(:green)
-  ]
+  # COLORS = [
+  #   "red".colorize(:red),
+  #   "blue".colorize(:blue),
+  #   "yellow".colorize(:yellow),
+  #   "green".colorize(:green)
+  # ]
 
   attr_accessor :sequence_length, :game_over, :seq
 
@@ -16,6 +16,7 @@ class Simon
     @sequence_length = sequence_length
     @game_over = false
     @seq = []
+    @count = 0
   end
 
   def play
@@ -34,39 +35,54 @@ class Simon
   def take_turn
     show_sequence
 
-    sleep 3
+    sleep 5
     system("clear")
 
     require_sequence
     if @game_over == false
+      @count += 1
       round_success_message
       @sequence_length += 1
     end
   end
 
   def show_sequence
-    puts "Here is your color sequence, try to remember (you have 3sec)"
+    puts "Here is your color sequence, try to remember (you have 5 sec)"
     add_random_color
-    puts @seq
+    display
+  end
+
+  def display
+    @seq.each do |el|
+      case el
+      when "red"
+        puts "red".colorize(:red)
+      when "blue"
+        puts "blue".colorize(:blue)
+      when "yellow"
+        puts "yellow".colorize(:yellow)
+      when "green"
+        puts "green".colorize(:green)
+      end
+    end
   end
 
   def require_sequence
-    p "Please repeat that sequence, separated by comma (no space): "
-    input = gets.chomp.split(",")
-    if input != @seq
-      @game_over = true
-    end
+    p "Please repeat that sequence, separated by a space: "
+    input = gets.chomp.split(" ")
+    check_sequence(input)
   end
 
   def add_random_color
     colors = COLORS
-    color = colors.sample.to_s
+    color = colors.sample
+    # color = colors.sample.to_s
     @seq << color
   end
 
   def round_success_message
     puts ""
-    puts "You got it right!!!"
+    puts "You got #{@count} right!!!"
   end
 
   def game_over?
@@ -78,10 +94,17 @@ class Simon
     puts "You lost, loser!!!"
   end
 
+  def check_sequence(guess)
+    if guess != @seq
+      @game_over = true
+    end
+  end
+
   def reset_game
     @sequence_length = 1
     @game_over = false
     @seq = []
+    @count = 0
   end
 end
 
