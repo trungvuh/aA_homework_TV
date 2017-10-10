@@ -16,7 +16,7 @@ class Board
   end
 
   def valid_move?(start_pos)
-    raise 'Invalid starting cup' unless start_pos.between?(1, 14)
+    raise 'Invalid starting cup' unless start_pos.between?(0, 13)
   end
 
   def make_move(start_pos, current_player_name)
@@ -25,7 +25,7 @@ class Board
     @cups[start_pos] = []
     next_pos = start_pos + 1
     skip = current_player_name == @name1 ? 13 : 6
-    p start_pos
+
     until count == 0
       next_pos = next_pos % @cups.size
       unless next_pos == skip
@@ -36,17 +36,17 @@ class Board
     end
 
     ending_pos = next_pos - 1
-    p ending_pos
+
     render
     next_turn(ending_pos, current_player_name)
   end
-
 
   def next_turn(ending_cup_idx, current_player_name)
     # helper method to determine what #make_move returns
     store = current_player_name == @name1 ? 6 : 13
 
     if ending_cup_idx == store
+      puts "You end up at your store point"
       :prompt
     else
       if @cups[ending_cup_idx].length == 1
@@ -76,6 +76,6 @@ class Board
 
   def winner
     return :draw if @cups[6].length == @cups[13].length
-    return @cups[6].length > @cups[13].length ? @name1 : @name2
+    @cups[6].length > @cups[13].length ? @name1 : @name2
   end
 end

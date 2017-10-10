@@ -1,8 +1,6 @@
 require_relative 'board'
 require_relative 'player'
 
-attr_reader :name1 :name2
-
 class Mancala
   def initialize(name1, name2)
     @player1 = Player.new(name1, 1)
