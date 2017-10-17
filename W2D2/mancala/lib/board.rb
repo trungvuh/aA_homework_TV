@@ -3,16 +3,16 @@ class Board
 
   def initialize(name1, name2)
     @cups = Array.new(14) { [] }
-    (0..13).each do |i|
-      4.times {@cups[i] << :stone} unless i == 6 || i == 13
-    end
     @name1 = name1
     @name2 = name2
+    place_stones
   end
 
   def place_stones
     # helper method to #initialize every non-store cup with four stones each
-
+    (0..13).each do |i|
+      4.times {@cups[i] << :stone} unless i == 6 || i == 13
+    end
   end
 
   def valid_move?(start_pos)
