@@ -1,0 +1,19 @@
+current directory: /Users/trungvu/appAcademy/homeworks/W3D4/QueryBuster/vendor/bundle/gems/byebug-9.0.6/ext/byebug
+/Users/trungvu/.rbenv/versions/2.3.1/bin/ruby -r ./siteconf20171018-73706-12ujclg.rb extconf.rb
+creating Makefile
+
+current directory: /Users/trungvu/appAcademy/homeworks/W3D4/QueryBuster/vendor/bundle/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /Users/trungvu/appAcademy/homeworks/W3D4/QueryBuster/vendor/bundle/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR="
+compiling locker.c
+compiling byebug.c
+compiling context.c
+compiling breakpoint.c
+compiling threads.c
+linking shared-object byebug/byebug.bundle
+
+current directory: /Users/trungvu/appAcademy/homeworks/W3D4/QueryBuster/vendor/bundle/gems/byebug-9.0.6/ext/byebug
+make "DESTDIR=" install
+/usr/local/bin/ginstall -c -m 0755 byebug.bundle ./.gem.20171018-73706-19rgafo/byebug

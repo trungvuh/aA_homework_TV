@@ -1,0 +1,21 @@
+current directory: /Users/trungvu/appAcademy/homeworks/W3D4/QueryBuster/vendor/bundle/gems/puma-3.9.1/ext/puma_http11
+/Users/trungvu/.rbenv/versions/2.3.1/bin/ruby -r ./siteconf20171018-73706-1nw3q9c.rb extconf.rb
+checking for BIO_read() in -lcrypto... yes
+checking for SSL_CTX_new() in -lssl... yes
+checking for openssl/bio.h... yes
+creating Makefile
+
+current directory: /Users/trungvu/appAcademy/homeworks/W3D4/QueryBuster/vendor/bundle/gems/puma-3.9.1/ext/puma_http11
+make "DESTDIR=" clean
+
+current directory: /Users/trungvu/appAcademy/homeworks/W3D4/QueryBuster/vendor/bundle/gems/puma-3.9.1/ext/puma_http11
+make "DESTDIR="
+compiling io_buffer.c
+compiling mini_ssl.c
+compiling puma_http11.c
+compiling http11_parser.c
+linking shared-object puma/puma_http11.bundle
+
+current directory: /Users/trungvu/appAcademy/homeworks/W3D4/QueryBuster/vendor/bundle/gems/puma-3.9.1/ext/puma_http11
+make "DESTDIR=" install
+/usr/local/bin/ginstall -c -m 0755 puma_http11.bundle ./.gem.20171018-73706-190sw4i/puma
