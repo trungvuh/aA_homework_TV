@@ -11851,11 +11851,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var configureStore = function configureStore() {
   var preloadedState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-  var store = (0, _redux.createStore)(_root_reducer2.default, preloadedState);
+  var store = (0, _redux.createStore)(_root_reducer2.default, preloadedState, (0, _redux.applyMiddleware)(addLogginToDispatch));
   store.subscribe(function () {
     localStorage.state = JSON.stringify(store.getState());
   });
   return store;
+};
+
+var addLogginToDispatch = function addLogginToDispatch(store) {
+  return function (next) {
+    return function (action) {
+      console.log(store.getState());
+      console.log(action);
+      var result = next(action);
+      console.log(store.getState());
+      return result;
+    };
+  };
 };
 
 exports.default = configureStore;
@@ -12889,22 +12901,36 @@ var _root2 = _interopRequireDefault(_root);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var addLogginToDispatch = function addLogginToDispatch(store) {
-  var storeDispatch = store.dispatch;
+// const addLogginToDispatch = (store) => {
+//   let storeDispatch = store.dispatch;
+//
+//   return (action) => {
+//
+//     console.log(store.getState());
+//     console.log(action);
+//     storeDispatch(action);
+//     console.log(store.getState());
+//   };
+// };
+//
 
-  return function (action) {
 
-    console.log(store.getState());
-    console.log(action);
-    storeDispatch(action);
-    console.log(store.getState());
-  };
-};
+//
+// const applyMiddleware = (store, ...middlewares) => {
+//   let dispatch = store.dispatch;
+//   middlewares.forEach( middleware => {
+//     dispatch = middleware(store)(dispatch);
+//   });
+//
+//   return Object.assign({}, store, { dispatch });
+// };
+
 
 document.addEventListener('DOMContentLoaded', function () {
   var preloadedState = localStorage.state ? JSON.parse(localStorage.state) : {};
   var store = (0, _store2.default)(preloadedState);
-  store.dispatch = addLogginToDispatch(store);
+  // store.dispatch = addLogginToDispatch(store);
+  // store = applyMiddleware(store, addLogginToDispatch);
 
   var root = document.getElementById('content');
   _reactDom2.default.render(_react2.default.createElement(_root2.default, { store: store }), root);
