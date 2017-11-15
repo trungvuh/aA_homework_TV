@@ -12475,8 +12475,6 @@ var TodoForm = function (_React$Component) {
   return TodoForm;
 }(_react2.default.Component);
 
-;
-
 exports.default = TodoForm;
 
 /***/ }),

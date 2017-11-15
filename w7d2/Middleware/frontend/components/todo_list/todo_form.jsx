@@ -1,4 +1,4 @@
-import { uniqueId } from '../../util/id_generator'
+import { uniqueId } from '../../util/id_generator';
 import React from 'react';
 
 class TodoForm extends React.Component {
@@ -54,6 +54,6 @@ class TodoForm extends React.Component {
       </form>
     );
   }
-};
+}
 
 export default TodoForm;
